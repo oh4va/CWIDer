@@ -1,0 +1,6 @@
+1  OUTPUT CW audio to repeater
+2  OUTPUT PTT to repeater
+3  INPUT  SQUELCH from repeater 
+4  INPUT  RSSI voltage from repeater
+5  GROUND
+6  13.6 VDC from repeater
