@@ -1,21 +1,21 @@
 #include <Morse.h>
 #include "CWIDer.h"
 
-const char call[] = "DE OH4SSV D";
+//const char call[] = "DE OH4SSV A";
+//const char call[] = "DE OH8RAA C";
+const char call[] = "DE OH8RUA C";
+
 byte state = IDLE;
 char c;
 Morse morse(GPIO_PWM, MORSE_CW_SPEED, 1);
 
 void setup() {
-  pinMode(GPIO_SQL, INPUT_PULLUP);
+  pinMode(GPIO_SQL, INPUT);
   pinMode(GPIO_PTT, OUTPUT);
   pinMode(GPIO_LED, OUTPUT);
   pinMode(GPIO_PWM, OUTPUT);
 
-  analogWrite(GPIO_PWM, 0);
   digitalWrite(GPIO_LED, HIGH);
-  digitalWrite(GPIO_PTT, LOW);
-
   delay(3000);
   digitalWrite(GPIO_LED, LOW);
 }
@@ -23,7 +23,7 @@ void setup() {
 void loop() {
 
   digitalWrite(GPIO_PTT, FSM[state].output);
-  
+
   switch (state) {
     case IDLE:
       digitalWrite(GPIO_LED, LOW);
@@ -34,8 +34,7 @@ void loop() {
     case SEND_ID:
       digitalWrite(GPIO_LED, HIGH);
       delay(TX_DELAY);
-      for (int i = 0; i < sizeof(call) - 1; i++)
-      {
+      for (int i = 0; i < sizeof(call) - 1; i++) {
         c = call[i];
         morse.send(c);
       }

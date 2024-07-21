@@ -1,7 +1,7 @@
 
-#define VERSION "V1.0.0"
+#define VERSION "V1.0.1"
 
-#define MORSE_CW_SPEED 20
+#define MORSE_CW_SPEED 25
 #define TX_DELAY 500
 
 #define GPIO_SQL   2
@@ -24,8 +24,8 @@ typedef struct {
 
 /** FSM */
 const fsm_t FSM[] = {
-  { 0, {           IDLE,   WAIT_SQL_OFF },       2000 }, // IDLE
-  { 0, {        SEND_ID,   WAIT_SQL_OFF },        200 }, // WAIT_SQL_OFF
-  { 1, { WAIT_ID_PERIOD, WAIT_ID_PERIOD },        300 }, // SEND_ID
-  { 0, {           IDLE,   WAIT_SQL_OFF },     600000 }  // WAIT_ID_PERIOD
+  { 0, {           IDLE,   WAIT_SQL_OFF },   1000 }, // IDLE
+  { 0, {        SEND_ID,   WAIT_SQL_OFF },    200 }, // WAIT_SQL_OFF
+  { 1, { WAIT_ID_PERIOD, WAIT_ID_PERIOD },    300 }, // SEND_ID
+  { 0, {           IDLE,   WAIT_SQL_OFF }, 600000 }  // WAIT_ID_PERIOD
 };
